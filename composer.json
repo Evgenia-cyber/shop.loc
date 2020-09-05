@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+            "shop\\": "vendor/shop/core",
+            "app\\": "app",
+            "widgets\\": "widgets"
+        }
+    },
+    "require": {
+        "gabordemooij/redbean": "dev-master"
+    }
+}
