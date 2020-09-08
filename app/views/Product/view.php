@@ -16,22 +16,25 @@
         <div class="single-main">
             <div class="col-md-9 single-main-left">
                 <div class="sngl-top">
-                    <div class="col-md-5 single-top-left">	
-                        <div class="flexslider">
-                            <ul class="slides">
-                                <li data-thumb="images/s-1.jpg">
-                                    <div class="thumb-image"> <img src="images/s-1.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
-                                <li data-thumb="images/s-2.jpg">
-                                    <div class="thumb-image"> <img src="images/s-2.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
-                                <li data-thumb="images/s-3.jpg">
-                                    <div class="thumb-image"> <img src="images/s-3.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li> 
-                            </ul>
+                    
+                    <?php if ($gallery): ?>
+                        <div class="col-md-5 single-top-left">
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <?php foreach ($gallery as $item): ?>
+                                        <li data-thumb="images/<?= $item->img ?>">
+                                            <div class="thumb-image"> <img src="images/<?= $item->img ?>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>	
+                    <?php else: ?>
+                        <div class="col-md-3">
+                            <img src="images/<?= $product->img ?>" alt="">
                         </div>
+                    <?php endif; ?>
 
-                    </div>	
                     <?php
                     $curr = shop\App::$app->getProperty('currency');
                     $cats = shop\App::$app->getProperty('cats');
@@ -58,7 +61,7 @@
                             <?php if ($product->old_price): ?>
                                 <del><?= $curr['symbol_left'] ?><?= $product->old_price * $curr['value']; ?><?= $curr['symbol_right'] ?></del>
                             <?php endif; ?>
-<?= $product->content ?>
+                            <?= $product->content ?>
                             <div class="available">
                                 <ul>
                                     <li>Color
@@ -129,11 +132,11 @@
                         </li>
                     </ul>
                 </div>
-<?php if ($related): ?>
+                <?php if ($related): ?>
                     <div class="latestproducts">
                         <div class="product-one">
                             <h3>С этим товаром также покупают:</h3>
-    <?php foreach ($related as $item): ?>
+                            <?php foreach ($related as $item): ?>
                                 <div class="col-md-4 product-left p-left"> 
                                     <div class="product-main simpleCart_shelfItem">
                                         <a href="product/<?= $item['alias'] ?>" class="mask"><img class="img-responsive zoom-img" src="images/<?= $item['img'] ?>" alt="" /></a>
@@ -147,16 +150,16 @@
                                                 <span class=" item_price"><?= $curr['symbol_left'] ?><?= $item['price'] * $curr['value']; ?><?= $curr['symbol_right'] ?></span>
                                                 <?php if ($item['old_price']): ?>
                                                     <small><del><?= $curr['symbol_left'] ?><?= $item['old_price'] * $curr['value']; ?><?= $curr['symbol_right'] ?></del></small>   
-        <?php endif; ?>
+                                                <?php endif; ?>
                                             </h4>
                                         </div>
                                     </div>
                                 </div>
-    <?php endforeach; ?>
+                            <?php endforeach; ?>
                             <div class="clearfix"></div>
                         </div>
                     </div>
-<?php endif; ?> 
+                <?php endif; ?> 
             </div>
             <div class="col-md-3 single-right">
                 <div class="w_sidebar">

@@ -185,3 +185,5 @@
 ===============================
 [2020-09-08 12:40:03] Текст ошибки:Контроллер app\controllers\CartController не найден | Файл:D:\OpenServer\domains\shop.loc\vendor\shop\core\Router.php | Строка:43
 ===============================
+[2020-09-08 15:46:45] Текст ошибки:Контроллер app\controllers\CartController не найден | Файл:D:\OpenServer\domains\shop.loc\vendor\shop\core\Router.php | Строка:43
+===============================
