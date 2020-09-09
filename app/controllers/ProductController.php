@@ -20,11 +20,17 @@ class ProductController extends AppController {
         if ($recently_viewed_from_cookie) {
             $recently_viewed = \R::find('product', 'id IN (' . \R::genSlots($recently_viewed_from_cookie) . ') LIMIT 3', $recently_viewed_from_cookie);
         }
+        
+        $all_recently_viewed_from_cookie = $product_model->getAllRecentlyViewed();
+        $all_recently_viewed = null;
+        if ($all_recently_viewed_from_cookie) {
+            $all_recently_viewed = \R::find('product', 'id IN (' . \R::genSlots($all_recently_viewed_from_cookie) . ')', $all_recently_viewed_from_cookie);
+        }
 
         $gallery = \R::findAll('gallery', 'product_id=?', [$product->id]);
 
         $this->setMeta($product->title, $product->description, $product->keywords);
-        $this->set(compact('product', 'related', 'gallery', 'recently_viewed'));
+        $this->set(compact('product', 'related', 'gallery', 'recently_viewed','all_recently_viewed'));
     }
 
 }

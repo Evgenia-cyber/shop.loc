@@ -4,12 +4,26 @@ namespace app\models;
 
 class Product extends AppModel {
 
-    public function setRecentlyViewed($id) {
+//    public function setRecentlyViewed($id) {
+//        $resentlyViewed = $this->getAllRecentlyViewed();
+//        if (!$resentlyViewed) {
+//            setcookie('resentlyViewed', $id, time() + 3600 * 24, '/');
+//        } else {
+//            $resentlyViewed = explode('-', $resentlyViewed);
+//            if (!in_array($id, $resentlyViewed)) {
+//                $resentlyViewed[] = $id;
+//                $resentlyViewed = implode('-', $resentlyViewed);
+//                setcookie('resentlyViewed', $resentlyViewed, time() + 3600 * 24, '/');
+//            }
+//        }
+//    }
+    
+      public function setRecentlyViewed($id) {
         $resentlyViewed = $this->getAllRecentlyViewed();
         if (!$resentlyViewed) {
             setcookie('resentlyViewed', $id, time() + 3600 * 24, '/');
         } else {
-            $resentlyViewed = explode('-', $resentlyViewed);
+//            $resentlyViewed = explode('-', $resentlyViewed);
             if (!in_array($id, $resentlyViewed)) {
                 $resentlyViewed[] = $id;
                 $resentlyViewed = implode('-', $resentlyViewed);
@@ -27,9 +41,17 @@ class Product extends AppModel {
         return FALSE;
     }
 
+//    public function getAllRecentlyViewed() {
+//        if (!empty($_COOKIE['resentlyViewed'])) {
+//             return $_COOKIE['resentlyViewed'];
+//        }
+//        return FALSE;
+//    }
     public function getAllRecentlyViewed() {
         if (!empty($_COOKIE['resentlyViewed'])) {
-             return $_COOKIE['resentlyViewed'];
+            $allResentlyViewed = $_COOKIE['resentlyViewed'];
+            $allResentlyViewed = explode('-', $allResentlyViewed);
+             return $allResentlyViewed;
         }
         return FALSE;
     }

@@ -160,6 +160,7 @@
                         </div>
                     </div>
                 <?php endif; ?> 
+                
                   <?php if ($recently_viewed): ?>
                     <div class="latestproducts">
                         <div class="product-one">
@@ -188,6 +189,37 @@
                         </div>
                     </div>
                 <?php endif; ?> 
+                
+                  <?php if ($all_recently_viewed): ?>
+                <a id="allRecentlyViewedLink" class="add-cart">Показать все просмотренные товары</a>
+                <div class="latestproducts all-recently-viewed">
+                        <div class="product-one">
+                            <h3>Все просмотренные товары:</h3>
+                            <?php foreach ($all_recently_viewed as $item): ?>
+                                <div class="col-md-4 product-left p-left"> 
+                                    <div class="product-main simpleCart_shelfItem">
+                                        <a href="product/<?= $item['alias'] ?>" class="mask"><img class="img-responsive zoom-img" src="images/<?= $item['img'] ?>" alt="" /></a>
+                                        <div class="product-bottom">
+                                            <h3>
+                                                <a href="product/<?= $item['alias'] ?>" ><?= $item['title'] ?></a>
+                                            </h3>
+                                            <p>Explore Now</p>
+                                            <h4>
+                                                <a class="item_add add-to-cart-link" href="cart/add?id=<?= $item['id'] ?>" data-id="<?= $item['id'] ?>"><i></i></a> 
+                                                <span class=" item_price"><?= $curr['symbol_left'] ?><?= $item['price'] * $curr['value']; ?><?= $curr['symbol_right'] ?></span>
+                                                <?php if ($item['old_price']): ?>
+                                                    <small><del><?= $curr['symbol_left'] ?><?= $item['old_price'] * $curr['value']; ?><?= $curr['symbol_right'] ?></del></small>   
+                                                <?php endif; ?>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                <?php endif; ?> 
+                
             </div>
             <div class="col-md-3 single-right">
                 <div class="w_sidebar">
