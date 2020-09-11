@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Breadcrumbs;
+
 class ProductController extends AppController {
 
     public function viewAction() {
@@ -12,6 +14,8 @@ class ProductController extends AppController {
         }
 
         $related = \R::getAll("SELECT * FROM related_product JOIN product ON product.id=related_product.related_id WHERE related_product.product_id=?", [$product->id]);
+        
+        $breadcrumbs = Breadcrumbs::getBreadcrumbs($product->category_id, $product->title);
 
         $product_model = new \app\models\Product;
         $product_model->setRecentlyViewed($product->id);
@@ -30,7 +34,7 @@ class ProductController extends AppController {
         $gallery = \R::findAll('gallery', 'product_id=?', [$product->id]);
 
         $this->setMeta($product->title, $product->description, $product->keywords);
-        $this->set(compact('product', 'related', 'gallery', 'recently_viewed','all_recently_viewed'));
+        $this->set(compact('product', 'related', 'gallery', 'recently_viewed','all_recently_viewed', 'breadcrumbs'));
     }
 
 }
