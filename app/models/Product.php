@@ -23,7 +23,6 @@ class Product extends AppModel {
         if (!$resentlyViewed) {
             setcookie('resentlyViewed', $id, time() + 3600 * 24, '/');
         } else {
-//            $resentlyViewed = explode('-', $resentlyViewed);
             if (!in_array($id, $resentlyViewed)) {
                 $resentlyViewed[] = $id;
                 $resentlyViewed = implode('-', $resentlyViewed);

@@ -1,6 +1,6 @@
 $('#currency').change(function () {
-window.location = 'currency/change?curr=' + $(this).val();
-        });
+    window.location = 'currency/change?curr=' + $(this).val();
+});
 //при клике на ссылку выводим все просмотренные товары
 //const allRecentlyViewedLink = document.getElementById('all_recently_viewed');
 //const allRecentlyViewedDiv = document.querySelector('.all-recently-viewed');
@@ -13,13 +13,27 @@ window.location = 'currency/change?curr=' + $(this).val();
 //        allRecentlyViewedLink.textContent = 'Показать все просмотренные товары';
 //    }
 //};
-        $('#allRecentlyViewedLink').click(function () {
-if ($('.all-recently-viewed').css('display') === 'none'){
-$('.all-recently-viewed').css("display", "block");
+$('#allRecentlyViewedLink').click(function () {
+    if ($('.all-recently-viewed').css('display') === 'none') {
+        $('.all-recently-viewed').css("display", "block");
         $('#allRecentlyViewedLink').text('Скрыть все просмотренные товары');
-} else {
-$('.all-recently-viewed').css("display", "none");
+    } else {
+        $('.all-recently-viewed').css("display", "none");
         $('#allRecentlyViewedLink').text('Показать все просмотренные товары');
-}
+    }
 });
+
+$('.available select').on('change', function () {
+    var modId = $(this).val(),
+        color = $(this).find('option').filter(':selected').data('title'),
+        price = $(this).find('option').filter(':selected').data('price'),
+        basePrice = $('#base-price').data('base');
+//    console.log(modId, color, price);
+    if(price) {
+        $('#base-price').text(symbolLeft + price + symbolRight);
+    } else {
+        $('#base-price').text(symbolLeft + basePrice + symbolRight);
+    }
+
+})
 
