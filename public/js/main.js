@@ -5,27 +5,35 @@ $('body').on('click', '.add-to-cart-link', function (event) {
     const qty = $('.quantity input').val() ? $('.quantity input').val() : 1;
     const mod = $('.available select').val();
     $.ajax({
-                url: '/cart/add',
-                data: {id: id, qty: qty, mod: mod },
-                type: 'GET',
-                success: function (res) {
-                    showCart(res);
-                },
-                error: function () {
-                    alert('Ошибка! Попробуйте позже.');
-                }
-            });
+        url: '/cart/add',
+        data: {id: id, qty: qty, mod: mod},
+        type: 'GET',
+        success: function (res) {
+            showCart(res);
+        },
+        error: function () {
+            alert('Ошибка! Попробуйте позже.');
+        }
+    });
 //    console.log(id,qty,mod);
 });
 
 function showCart(cart) {
-    console.log(cart);
-};
+    if ($.trim(cart) == '<h3>Корзина пуста</h3>') {
+        $('#cart .modal-footer a, #cart .modal-footer .btn-danger').css('display', 'none');
+    } else {
+        $('#cart .modal-footer a, #cart .modal-footer .btn-danger').css('display', 'inline-block');
+    }
+    $("#cart .modal-body").html(cart);
+    $('#cart').modal();
+}
+;
 /*cart*/
 $('#currency').change(function () {
     window.location = 'currency/change?curr=' + $(this).val();
 });
 //при клике на ссылку выводим все просмотренные товары
+//JS
 //const allRecentlyViewedLink = document.getElementById('all_recently_viewed');
 //const allRecentlyViewedDiv = document.querySelector('.all-recently-viewed');
 //allRecentlyViewedLink.onclick = () => {
@@ -37,6 +45,7 @@ $('#currency').change(function () {
 //        allRecentlyViewedLink.textContent = 'Показать все просмотренные товары';
 //    }
 //};
+//jQuery
 $('#allRecentlyViewedLink').click(function () {
     if ($('.all-recently-viewed').css('display') === 'none') {
         $('.all-recently-viewed').css("display", "block");
