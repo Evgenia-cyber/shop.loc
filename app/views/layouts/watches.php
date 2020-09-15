@@ -1,4 +1,4 @@
-<!--A Design by W3layouts 
+<!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -17,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
          <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     </head>
-    <body> 
+    <body>
         <!--top-header-->
         <div class="top-header">
             <div class="container">
@@ -79,7 +79,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <div class="clearfix"> </div>
                     </div>
-                    <div class="col-md-3 header-right"> 
+                    <div class="col-md-3 header-right">
                         <div class="search-bar">
                             <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
                                         this.value = 'Search';
@@ -93,6 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         <!--bottom-header-->
         <div class="content">
+            <?php debug($_SESSION)?>
 <?= $content; ?>
         </div>
 
@@ -133,7 +134,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <h4>The company name,
                             <span>Lorem ipsum dolor,</span>
                             Glasglow Dr 40 Fe 72.</h4>
-                        <h5>+955 123 4567</h5>	
+                        <h5>+955 123 4567</h5>
                         <p><a href="mailto:example@email.com">contact@example.com</a></p>
                     </div>
                     <div class="clearfix"></div>
@@ -153,7 +154,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <input type="submit" value="Subscribe">
                         </form>
                     </div>
-                    <div class="col-md-6 footer-right">					
+                    <div class="col-md-6 footer-right">
                         <p>© 2015 Luxury Watches. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
                     </div>
                     <div class="clearfix"></div>
@@ -161,7 +162,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
         <!--footer-end-->
-        
+
         <?php $curr= shop\App::$app->getProperty('currency');?>
         <script>
         var path='<?=PATH?>';
@@ -170,11 +171,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         var symbolRight = '<?= $curr['symbol_right'] ?>';
         </script>
         <script src="js/jquery-1.11.0.min.js"></script>
-        <!--start-menu-->
-        <script src="js/simpleCart.min.js"></script>
-        	
         <!--dropdown-->
-        <script src="js/jquery.easydropdown.js"></script>	
+        <script src="js/jquery.easydropdown.js"></script>
         <!--Slider-Starts-Here-->
         <script src="js/responsiveslides.min.js"></script>
         <script>
@@ -211,7 +209,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             });
                                 </script>
                                  <!--dropdown-->
-        <script src="js/jquery.easydropdown.js"></script>	
+        <script src="js/jquery.easydropdown.js"></script>
         <script type="text/javascript">
         $(function () {
 
@@ -234,8 +232,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         });
         </script>
-        <script src="js/main.js"></script> 
-        
+        <script src="js/main.js"></script>
+
          <?php
         $logs = \R::getDatabaseAdapter()
                 ->getDatabase()
