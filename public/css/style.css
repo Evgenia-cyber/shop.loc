@@ -126,13 +126,15 @@ body a{
 .drop {
     margin-top: 10px;
 }
-a.simpleCart_empty {
+span.simpleCart_empty {
+    display: block;
     color: rgba(255, 255, 255, 0.6);
     font-family: 'Lato', sans-serif;
     font-size: 11px;
 }
 span.simpleCart_total {
-    font-size: 13px;
+     display: block;
+    font-size: 15px;
 }
 .box_1 p {
 	margin: 0px 0 0px 8px;
@@ -3080,4 +3082,7 @@ ul.tag-men {
 }
 #cart table img {
     max-height: 70px;
+}
+.del-item {
+    cursor: pointer;
 }
