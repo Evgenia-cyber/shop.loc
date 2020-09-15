@@ -101,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         <!--bottom-header-->
         <div class="content">
-            <?php // debug($_SESSION)?>
+            <?php debug($_SESSION)?>
             <?= $content; ?>
         </div>
 
