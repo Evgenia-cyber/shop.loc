@@ -1,4 +1,4 @@
- 
+
 <!--banner-starts-->
 <div class="bnr" id="home">
     <div  id="top" class="callbacks_container">
@@ -16,11 +16,11 @@
     </div>
     <div class="clearfix"> </div>
 </div>
-<!--banner-ends--> 
+<!--banner-ends-->
 
 <!--about-starts-->
 <?php if ($brands): ?>
-    <div class="about"> 
+    <div class="about">
         <div class="container">
             <div class="about-top grid-1">
                 <?php foreach ($brands as $brand): ?>
@@ -29,8 +29,8 @@
                             <img class="img-responsive" src="images/<?php echo $brand->img; ?>" alt="<?php echo $brand->title; ?>"/>
                             <figcaption>
                                 <h2><?php echo $brand->title; ?></h2>
-                                <p><?php echo $brand->description; ?></p>	
-                            </figcaption>			
+                                <p><?php echo $brand->description; ?></p>
+                            </figcaption>
                         </figure>
                     </div>
                 <?php endforeach; ?>
@@ -43,7 +43,7 @@
 <!--product-starts-->
 <?php if ($hits): ?>
 <?php $curr= shop\App::$app->getProperty('currency');?>
-    <div class="product"> 
+    <div class="product">
         <div class="container">
             <div class="product-top">
                 <div class="product-one">
@@ -54,7 +54,7 @@
                                 <div class="product-bottom">
                                     <h3><a href="product/<?= $hit->alias; ?>"><?= $hit->title; ?></a></h3>
                                     <p>Explore Now</p>
-                                    <h4><a class="add-to-cart-link" href="cart/add?id=<?= $hit->id; ?>"><i></i></a> <span class=" item_price"><?=$curr['symbol_left']?><?= $hit->price*$curr['value']; ?><?=$curr['symbol_right']?></span>
+                                    <h4><a data-id="<?= $hit->id?>" class="add-to-cart-link" href="cart/add?id=<?= $hit->id; ?>"><i></i></a> <span class=" item_price"><?=$curr['symbol_left']?><?= $hit->price*$curr['value']; ?><?=$curr['symbol_right']?></span>
                                         <?php if ($hit->old_price): ?>
                                             <small>
                                                 <del><?=$curr['symbol_left']?><?= $hit->old_price*$curr['value']; ?><?=$curr['symbol_right']?></del>
@@ -69,7 +69,7 @@
                         </div>
                     <?php endforeach; ?>
                     <div class="clearfix"></div>
-                </div>				
+                </div>
             </div>
         </div>
     </div>
