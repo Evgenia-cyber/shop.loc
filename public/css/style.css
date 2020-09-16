@@ -3086,3 +3086,27 @@ ul.tag-men {
 .del-item {
     cursor: pointer;
 }
+.tt-menu {
+    background: #fff;
+    padding: 0 15px 15px;
+    box-sizing: border-box;
+    width: 100%;
+}
+span.twitter-typeahead .tt-suggestion:hover,
+span.twitter-typeahead .tt-suggestion:focus {
+	color: #0AA5E2;
+}
+.twitter-typeahead .tt-suggestion {
+    cursor: pointer;
+    padding-top: 15px;
+}
+@media (max-width: 778px){
+    .header {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .col-md-3.header-right {
+        flex: 1 0 100%;
+       z-index: 1000;
+    }
+}
