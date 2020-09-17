@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/CartController.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/models/Cart.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/CurrencyController.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/public/js/main.js</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/layouts/watches.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/public/css/style.css</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/Cart/cart_modal.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
