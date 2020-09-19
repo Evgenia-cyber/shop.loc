@@ -1432,7 +1432,8 @@ a.mask {
 .account-bottom {
     margin-top: 2.2em;
 }
-.account-left input[type="text"],.account-left input[type="password"] {
+.account-left input[type="text"],.account-left input[type="password"],
+.account-left input[type="email"]{
     width: 90%;
     margin: 0px;
     color: #000;
@@ -3109,4 +3110,10 @@ span.twitter-typeahead .tt-suggestion:focus {
         flex: 1 0 100%;
        z-index: 1000;
     }
+}
+.drop > .btn-group > a{
+	color: #fff;
+	cursor: pointer;
+	position: relative;
+	top: -2px;
 }
