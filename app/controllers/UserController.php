@@ -11,10 +11,15 @@ public function signupAction(){
             $data = $_POST;
             $user->load($data);
 
-            if(!$user->validate($data)){
+            if(!$user->validate($data) || !$user->checkUnique()){
                 $user->getErrors();
             }else{
-                $_SESSION['success'] = 'ok';
+                $user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
+                  if($user->save('user')){
+                    $_SESSION['success'] = 'Вы успешно зарегистрировались';
+                }else{
+                    $_SESSION['error'] = 'Ошибка!';
+                }
             }
             redirect();
 
