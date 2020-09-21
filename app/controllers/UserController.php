@@ -10,8 +10,14 @@ public function signupAction(){
             $user = new User();
             $data = $_POST;
             $user->load($data);
-            debug($user);
-            die();
+
+            if(!$user->validate($data)){
+                $user->getErrors();
+            }else{
+                $_SESSION['success'] = 'ok';
+            }
+            redirect();
+
     }
     $this->setMeta('Регистрация');
 }
