@@ -3081,6 +3081,7 @@ ul.tag-men {
 .all-recently-viewed{
     display: none;
 }
+table img,
 #cart table img {
     max-height: 70px;
 }
