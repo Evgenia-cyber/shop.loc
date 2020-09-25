@@ -25,15 +25,27 @@ class CategoryController extends AppController{
         $perpage = App::$app->getProperty('pagination');
           $sql_part = '';
         if(!empty($_GET['filter'])){
-            /*
+            $filter = Filter::getFilter();
+            if($filter){
+                /*
+             * //1 option - simplest filter
             SELECT `product`.*  FROM `product`  WHERE category_id IN (6) AND id IN
             (
             SELECT product_id FROM attribute_product WHERE attr_id IN (1,5)
             )
+                 *  $sql_part = "AND id IN (SELECT product_id FROM attribute_product WHERE attr_id IN ($filter))";
+             //end simplest filter
             */
-            $filter = Filter::getFilter();
-            if($filter){
-                $sql_part = "AND id IN (SELECT product_id FROM attribute_product WHERE attr_id IN ($filter))";
+                //2 option - more complex filter
+                 /*
+            SELECT `product`.*  FROM `product`  WHERE category_id IN (6) AND id IN
+            (
+            SELECT product_id FROM attribute_product WHERE attr_id IN (1,5) GROUP BY product_id HAVING COUNT(product_id) = 2
+            )
+            */
+                $countGroupsOfFilters = Filter::getCountGroups($filter);
+                $sql_part = "AND id IN (SELECT product_id FROM attribute_product WHERE attr_id IN ($filter) GROUP BY product_id HAVING COUNT(product_id) = $countGroupsOfFilters)";
+                //end more complex filter
             }
         }
         $total = \R::count('product', "category_id IN ($ids) $sql_part");
