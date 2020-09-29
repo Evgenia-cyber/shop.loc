@@ -1,6 +1,9 @@
 <?php
-function debug($arr) {
+function debug($arr, $die=false) {
      echo '<pre>'. print_r($arr, TRUE).'</pre>';
+     if ($die) {
+         die;
+     }
 }
 
 function redirect($http=FALSE) {
