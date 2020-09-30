@@ -4,11 +4,7 @@ namespace shop\base;
 use shop\Db;
 use Valitron\Validator;
 use const WWW;
-/**
- * Description of Model
- *
- * @author Evgeniya
- */
+
 abstract class Model {
 
     public $attributes = [];
@@ -56,5 +52,13 @@ abstract class Model {
         }
         $errors .= '</ul>';
         $_SESSION['error'] = $errors;
+    }
+
+     public function update($table, $id){
+        $bean = \R::load($table, $id);
+        foreach($this->attributes as $name => $value){
+            $bean->$name = $value;
+        }
+        return \R::store($bean);
     }
 }
