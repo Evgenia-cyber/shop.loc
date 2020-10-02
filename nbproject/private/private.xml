@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/OrderController.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/layouts/admin.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/public/adminlte/my.js</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Order/view.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/CategoryController.php</file>
         </group>
     </open-files>
 </project-private>
