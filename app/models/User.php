@@ -9,6 +9,7 @@ class User extends AppModel {
         'name' => '',
         'email' => '',
         'address' => '',
+         'role' => 'user',
     ];
 
        public $rules = [
@@ -69,5 +70,5 @@ class User extends AppModel {
     public static function isAdmin(){
         return (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin');
     }
-    
+
 }
