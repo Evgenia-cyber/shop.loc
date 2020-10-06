@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/User/index.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/UserController.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/User/add.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/User/edit.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/ProductController.php</file>
         </group>
     </open-files>
 </project-private>

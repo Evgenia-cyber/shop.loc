@@ -83,8 +83,8 @@
                             <select name="related[]" class="form-control select2" id="related" multiple></select>
                         </div>-->
 
-<!--                        <?php// new \app\widgets\filter\Filter(null, WWW . '/filter/admin_filter_tpl.php'); ?>
-                        <div class="form-group">
+ <?php new \widgets\filter\Filter(null, WWW . '/filter/admin_filter_tpl.php'); ?>
+<!--   <div class="form-group">
                             <div class="col-md-4">
                                 <div class="box box-danger box-solid file-upload">
                                     <div class="box-header">
