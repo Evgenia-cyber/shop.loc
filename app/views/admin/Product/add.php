@@ -78,10 +78,10 @@
                             </label>
                         </div>
 
-<!--                        <div class="form-group">
+                        <div class="form-group">
                             <label for="related">Связанные товары</label>
                             <select name="related[]" class="form-control select2" id="related" multiple></select>
-                        </div>-->
+                        </div>
 
  <?php new \widgets\filter\Filter(null, WWW . '/filter/admin_filter_tpl.php'); ?>
 <!--   <div class="form-group">

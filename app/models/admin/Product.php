@@ -62,4 +62,38 @@ class Product extends AppModel{
         }
     }
 
+       public function editRelatedProduct($id, $data){
+        $related_product = \R::getCol('SELECT related_id FROM related_product WHERE product_id = ?', [$id]);
+        // Удаление связанных товаров
+        if(empty($data['related']) && !empty($related_product)){
+            \R::exec("DELETE FROM related_product WHERE product_id = ?", [$id]);
+            return;
+        }
+        // Добавление связанных товаров
+        if(empty($related_product) && !empty($data['related'])){
+            $sql_part = '';
+            foreach($data['related'] as $v){
+                $v = (int)$v;
+                $sql_part .= "($id, $v),";
+            }
+            $sql_part = rtrim($sql_part, ',');
+            \R::exec("INSERT INTO related_product (product_id, related_id) VALUES $sql_part");
+            return;
+        }
+        // Изменение связанных товаров
+        if(!empty($data['related'])){
+            $result = array_diff($related_product, $data['related']);
+            if(!empty($result) || count($related_product) != count($data['related'])){
+                \R::exec("DELETE FROM related_product WHERE product_id = ?", [$id]);
+                $sql_part = '';
+                foreach($data['related'] as $v){
+                    $v = (int)$v;
+                    $sql_part .= "($id, $v),";
+                }
+                $sql_part = rtrim($sql_part, ',');
+                \R::exec("INSERT INTO related_product (product_id, related_id) VALUES $sql_part");
+            }
+        }
+    }
+
 }

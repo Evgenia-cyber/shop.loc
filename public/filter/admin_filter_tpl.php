@@ -4,7 +4,8 @@
             <li<?php if($i == 1) echo ' class="active"' ?>><a href="#tab_<?= $group_id ?>" data-toggle="tab" aria-expanded="true"><?= $group_item ?></a></li>
             <?php $i++; endforeach; ?>
         <li class="pull-right">
-            <a href="#" id="reset-filter">Сброс</a>
+            <!--<a href="#" id="reset-filter">Сброс</a>-->
+            <button class="btn btn-danger" href="#" id="reset-filter">Сброс</button>
         </li>
     </ul>
     <div class="tab-content">
