@@ -84,14 +84,14 @@
                         </div>
 
  <?php new \widgets\filter\Filter(null, WWW . '/filter/admin_filter_tpl.php'); ?>
-<!--   <div class="form-group">
+  <div class="form-group">
                             <div class="col-md-4">
                                 <div class="box box-danger box-solid file-upload">
                                     <div class="box-header">
                                         <h3 class="box-title">Базовое изображение</h3>
                                     </div>
                                     <div class="box-body">
-                                        <div id="single" class="btn btn-success" data-url="product/add-image" data-name="single">Выбрать файл</div>
+                                        <div id="single" class="btn btn-success" data-url="/product/add-image" data-name="single">Выбрать файл</div>
                                         <p><small>Рекомендуемые размеры: 125х200</small></p>
                                         <div class="single"></div>
                                     </div>
@@ -103,10 +103,10 @@
                             <div class="col-md-8">
                                 <div class="box box-primary box-solid file-upload">
                                     <div class="box-header">
-                                        <h3 class="box-title">Картинки галереи</h3>
+                                        <h3 class="box-title">Изображения галереи</h3>
                                     </div>
                                     <div class="box-body">
-                                        <div id="multi" class="btn btn-success" data-url="product/add-image" data-name="multi">Выбрать файл</div>
+                                        <div id="multi" class="btn btn-success" data-url="/product/add-image" data-name="multi">Выбрать файл</div>
                                         <p><small>Рекомендуемые размеры: 700х1000</small></p>
                                         <div class="multi"></div>
                                     </div>
@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
 
                     </div>
                     <div class="box-footer">
