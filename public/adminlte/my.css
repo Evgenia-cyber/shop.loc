@@ -35,3 +35,21 @@
 .overlay{
     display: none;
 }
+.modif{
+    display: flex;
+    flex-wrap: wrap;
+}
+.modif .form-group{
+    flex: 1 1 45%;
+}
+.form-group-price{
+    margin-left: 10px;
+}
+.modification{
+    margin-bottom: 25px;
+}
+.del-item,
+.del-single-img {
+    max-height:150px;
+    cursor: pointer;
+}

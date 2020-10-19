@@ -1,12 +1,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Новый товар
+        Редактирование товара <?=$product->title?>
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?= ADMIN; ?>"><i class="fa fa-dashboard"></i> Главная</a></li>
         <li><a href="<?= ADMIN; ?>/product">Список товаров</a></li>
-        <li class="active">Новый товар</li>
+        <li class="active">Редактирование товара</li>
     </ol>
 </section>
 
@@ -15,11 +15,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box">
-                <form action="<?= ADMIN; ?>/product/add" method="post" data-toggle="validator">
+                <form action="<?= ADMIN; ?>/product/edit" method="post" data-toggle="validator">
                     <div class="box-body">
                         <div class="form-group has-feedback">
                             <label for="title">Наименование товара</label>
-                            <input type="text" name="title" class="form-control" id="title" placeholder="Наименование товара" value="<?php isset($_SESSION['form_data']['title']) ? h($_SESSION['form_data']['title']) : null; ?>" required>
+                            <input type="text" name="title" class="form-control" id="title" placeholder="Наименование товара" value="<?=h($product->title)?>" required>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         </div>
 
@@ -36,77 +36,61 @@
                                     'name' => 'category_id',
                                     'id' => 'category_id',
                                 ],
-                                'prepend' => '<option>Выберите категорию</option>',
                                     ])
                             ?>
                         </div>
 
                         <div class="form-group">
                             <label for="keywords">Ключевые слова</label>
-                            <input type="text" name="keywords" class="form-control" id="keywords" placeholder="Ключевые слова" value="<?php isset($_SESSION['form_data']['keywords']) ? h($_SESSION['form_data']['keywords']) : null; ?>">
+                            <input type="text" name="keywords" class="form-control" id="keywords" placeholder="Ключевые слова" value="<?=h($product->keywords)?>">
                         </div>
 
                         <div class="form-group">
                             <label for="description">Описание</label>
-                            <input type="text" name="description" class="form-control" id="description" placeholder="Описание" value="<?php isset($_SESSION['form_data']['description']) ? h($_SESSION['form_data']['description']) : null; ?>">
+                            <input type="text" name="description" class="form-control" id="description" placeholder="Описание" value="<?=h($product->description)?>">
                         </div>
 
                         <div class="form-group has-feedback">
                             <label for="price">Цена</label>
-                            <input type="text" name="price" class="form-control" id="description" placeholder="Цена" pattern="^[0-9.]{1,}$" value="<?php isset($_SESSION['form_data']['price']) ? h($_SESSION['form_data']['price']) : null; ?>" required data-error="Допускаются цифры и десятичная точка">
+                            <input type="text" name="price" class="form-control" id="description" placeholder="Цена" pattern="^[0-9.]{1,}$" value="<?=$product->price?>" required data-error="Допускаются цифры и десятичная точка">
                             <div class="help-block with-errors"></div>
                         </div>
 
                         <div class="form-group has-feedback">
                             <label for="old_price">Цена</label>
-                            <input type="text" name="old_price" class="form-control" id="description" placeholder="Старая цена" pattern="^[0-9.]{1,}$" value="<?php isset($_SESSION['form_data']['old_price']) ? h($_SESSION['form_data']['old_price']) : null; ?>" data-error="Допускаются цифры и десятичная точка">
+                            <input type="text" name="old_price" class="form-control" id="description" placeholder="Старая цена" pattern="^[0-9.]{1,}$" value="<?=$product->old_price?>" data-error="Допускаются цифры и десятичная точка">
                             <div class="help-block with-errors"></div>
                         </div>
 
                         <div class="form-group has-feedback">
                             <label for="content">Контент</label>
-                            <textarea name="content" id="editor1" cols="80" rows="10"><?php isset($_SESSION['form_data']['old_price']) ? $_SESSION['form_data']['old_price'] : null; ?></textarea>
+                            <textarea name="content" id="editor1" cols="80" rows="10"><?=h($product->content)?></textarea>
                         </div>
 
                         <div class="form-group">
                             <label>
-                                <input type="checkbox" name="status" checked> Статус
+                                <input type="checkbox" name="status" <?=$product->status ? "checked":null?>> Статус
                             </label>
                         </div>
 
                         <div class="form-group">
                             <label>
-                                <input type="checkbox" name="hit"> Хит
+                                <input type="checkbox" name="hit"<?=$product->hit ? "checked":null?>> Хит
                             </label>
                         </div>
 
                         <div class="form-group">
                             <label for="related">Связанные товары</label>
-                            <select name="related[]" class="form-control select2" id="related" multiple></select>
+                            <select name="related[]" class="form-control select2" id="related" multiple>
+                                <?php if(!empty($related_product)):?>
+                                <?php foreach ($related_product as $item):?>
+                                <option value="<?=$item['related_id']?>" selected><?=$item['title']?></option>
+                                <?php endforeach;?>
+                                <?php endif?>
+                            </select>
                         </div>
 
-                        <?php new \widgets\filter\Filter(null, WWW . '/filter/admin_filter_tpl.php'); ?>
-
-                        <!--/****************************/-->
-                        <div>
-                            <div>
-                                <label for="modification_title">Модификации товара</label>
-                            </div>
-                            <div class="modif">
-                                <div class="form-group">
-                                    <input type="text" name="modification_title[]" value="" class="form-control modification_title" placeholder="Модификации товара">
-                                    <div class="help-block with-errors mod"></div>
-                                </div>
-                                <div class="form-group form-group-price">
-                                    <input type="text" name="modification_price[]" value="" class="form-control modification_price" placeholder="Цена модификации товара" pattern="^[0-9.]{1,}$" data-error="Допускаются цифры и десятичная точка">
-                                    <div class="help-block with-errors mod"></div>
-                                </div>
-
-                            </div>
-                            <div class="btn btn-success modification" id="btn_for_modification">Добавить еще модификации</div>
-                        </div>
-                        <!--/******************/-->
-
+<?php new \widgets\filter\Filter($filter, WWW . '/filter/admin_filter_tpl.php'); ?>
                         <div class="form-group">
                             <div class="col-md-4">
                                 <div class="box box-danger box-solid file-upload">
@@ -116,7 +100,10 @@
                                     <div class="box-body">
                                         <div id="single" class="btn btn-success" data-url="/product/add-image" data-name="single">Выбрать файл</div>
                                         <p><small>Рекомендуемые размеры: 125х200</small></p>
-                                        <div class="single"></div>
+                                        <div class="single">
+                                            <img src="/images/<?=$product->img?>" alt="" data-id="<?=$product->id?>" data-src="<?=$product->img?>" class="del-single-img">
+                                           
+                                        </div>
                                     </div>
                                     <div class="overlay">
                                         <i class="fa fa-refresh fa-spin"></i>
@@ -131,7 +118,13 @@
                                     <div class="box-body">
                                         <div id="multi" class="btn btn-success" data-url="/product/add-image" data-name="multi">Выбрать файл</div>
                                         <p><small>Рекомендуемые размеры: 700х1000</small></p>
-                                        <div class="multi"></div>
+                                        <div class="multi">
+                                            <?php if(!empty($gallery)):?>
+                                             <?php foreach ($gallery as $item):?>
+                                            <img src="/images/<?=$item?>" alt="" data-id="<?=$product->id?>" data-src="<?=$item?>" class="del-item">
+                                <?php endforeach;?>
+                                            <?php endif;?>
+                                        </div>
                                     </div>
                                     <div class="overlay">
                                         <i class="fa fa-refresh fa-spin"></i>
@@ -139,15 +132,28 @@
                                 </div>
                             </div>
                         </div>
+                        <!--/****************************/-->
+<!--                        <div class="form-group">
+                            <label for="modification_title">Модификации товара</label>
+                            <input type="text" name="modification_title" class="form-control" id="modification_title" placeholder="Модификации товара" value="">
+                            <label for="modification_title">Цена модификации товара</label>
 
+                            <input type="text" name="modification_price" class="form-control" id="modification_price" placeholder="Цена модификации товара" pattern="^[0-9.]{1,}$" value="" data-error="Допускаются цифры и десятичная точка">
+
+                            <div class="help-block with-errors"></div>
+
+                            <div class="btn btn-success modification" id="btn_for_modification">Добавить еще модификации</div>
+                        </div>-->
+                        <!--/******************/-->
                     </div>
                     <div class="box-footer">
-                        <button id="submit" type="submit" class="btn btn-success">Добавить</button>
+                        <input type="hidden" name="id" value="<?=$product->id?>">
+                        <button type="submit" class="btn btn-success">Сохранить</button>
                     </div>
                 </form>
-                <?php if (isset($_SESSION['form_data'])) unset($_SESSION['form_data']); ?>
             </div>
         </div>
     </div>
 
 </section>
+
