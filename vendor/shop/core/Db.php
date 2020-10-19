@@ -1,6 +1,7 @@
 <?php
 
 namespace shop;
+
 //use \RedBeanPHP\R as R;
 
 /**
@@ -18,11 +19,14 @@ class Db {
         \R::setup($db['dsn'], $db['user'], $db['password']);
         if (!\R::testConnection()) {
             throw new \Exception("Нет соединения с БД", 500);
-        } 
+        }
         \R::freeze(TRUE);
         if (DEBUG) {
             \R::debug(TRUE, 1);
         }
+        \R::ext('xdispense', function($type) {
+            return \R::getRedBean()->dispense($type);
+        });
     }
 
 //    public function __destruct() {
