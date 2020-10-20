@@ -4,7 +4,7 @@ namespace app\models\admin;
 
 use app\models\AppModel;
 
-class FilterGroup extends AppModel {
+class FilterAttr extends AppModel {
 
     public $attributes = [
         'value' => '',

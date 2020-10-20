@@ -2,6 +2,7 @@
 
 namespace app\controllers\admin;
 
+use app\models\admin\FilterAttr;
 use app\models\admin\FilterGroup;
 
 class FilterController extends AppController {
@@ -29,16 +30,41 @@ class FilterController extends AppController {
             $group = new FilterGroup();
             $data = $_POST;
             $group->load($data);
-            if(!$group->validate($data)){
+            if (!$group->validate($data)) {
                 $group->getErrors();
                 redirect();
             }
-            if($group->save('attribute_group', FALSE)){
+            if ($group->save('attribute_group', FALSE)) {
                 $_SESSION['success'] = 'Группа фильтров добавлена';
                 redirect();
             }
         }
         $this->setMeta('Новая группа фильтров');
+    }
+
+    public function attributeAction() {
+        $attrs = \R::getAssoc("SELECT attribute_value.*, attribute_group.title FROM attribute_value JOIN attribute_group ON attribute_group.id=attribute_value.attr_group_id");
+        $this->setMeta("Фильтры");
+        $this->set(compact('attrs'));
+    }
+
+    public function attributeAddAction() {
+        if (!empty($_POST)) {
+            $attr = new FilterAttr();
+            $data = $_POST;
+            $attr->load($data);
+            if (!$attr->validate($data)) {
+                $attr->getErrors();
+                redirect();
+            }
+            if ($attr->save('attribute_value', FALSE)) {
+                $_SESSION['success'] = 'Фильтр добавлен';
+                redirect();
+            }
+        }
+        $group=\R::findAll('attribute_group');
+        $this->setMeta('Новый фильтр');
+        $this->set(compact('group'));
     }
 
 }

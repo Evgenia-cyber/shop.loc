@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/FilterController.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Filter/attribute.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/layouts/admin.php</file>
             <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Product/add.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/ProductController.php</file>
             <file>file:/D:/OpenServer/domains/shop.loc/public/adminlte/my.js</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Product/edit.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/public/adminlte/my.css</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/models/admin/Product.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Filter/group-add.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Filter/attribute-group.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Filter/attribute-add.php</file>
         </group>
     </open-files>
 </project-private>

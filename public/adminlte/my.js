@@ -123,8 +123,8 @@ function ajaxUploadImg(button) {
 //            );
 //});
 $('#btn_for_modification').on("click", function () {
-$(this).before(
-'\
+    $(this).before(
+            '\
 <div class="modif">\
 <div class="form-group">\
 <input type="text" name="modification_title[]" required class="form-control modification_title" placeholder="Модификации товара">\
@@ -136,8 +136,8 @@ $(this).before(
 </div>\
 </div>\
 '
-);
-$('form').validator('update');
+            );
+    $('form').validator('update');
 });
 
 $('#submit').on("click", function () {
@@ -207,4 +207,15 @@ $('.del-single-img').on('click', function () {
         }
     });
 });
+/*********************************/
+$('#add_form').on('submit', function () {
+//    $('#category_id').css({'border':"2px solid red"});
+    if(!isNumeric($('#category_id').val())) {
+        alert("Выберите категорию/группу!");
+        return false;
+    }
+});
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
 /*********************************/
