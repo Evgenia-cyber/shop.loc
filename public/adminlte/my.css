@@ -53,3 +53,6 @@
     max-height:150px;
     cursor: pointer;
 }
+input#base{
+    margin-right: 10px;
+}
