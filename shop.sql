@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Окт 17 2020 г., 10:27
--- Версия сервера: 5.7.29
--- Версия PHP: 7.2.29
+-- Host: 127.0.0.1:3306
+-- Generation Time: Oct 27, 2020 at 10:20 AM
+-- Server version: 5.7.29
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `shop`
+-- Database: `shop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `attribute_group`
+-- Table structure for table `attribute_group`
 --
 
 CREATE TABLE `attribute_group` (
@@ -33,7 +33,7 @@ CREATE TABLE `attribute_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `attribute_group`
+-- Dumping data for table `attribute_group`
 --
 
 INSERT INTO `attribute_group` (`id`, `title`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `attribute_group` (`id`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `attribute_product`
+-- Table structure for table `attribute_product`
 --
 
 CREATE TABLE `attribute_product` (
@@ -55,7 +55,7 @@ CREATE TABLE `attribute_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `attribute_product`
+-- Dumping data for table `attribute_product`
 --
 
 INSERT INTO `attribute_product` (`attr_id`, `product_id`) VALUES
@@ -73,8 +73,17 @@ INSERT INTO `attribute_product` (`attr_id`, `product_id`) VALUES
 (1, 55),
 (1, 56),
 (1, 57),
-(1, 58),
-(1, 82),
+(1, 59),
+(1, 60),
+(1, 61),
+(1, 62),
+(1, 63),
+(1, 64),
+(1, 65),
+(1, 66),
+(1, 67),
+(1, 68),
+(1, 69),
 (1, 90),
 (1, 91),
 (1, 97),
@@ -106,7 +115,17 @@ INSERT INTO `attribute_product` (`attr_id`, `product_id`) VALUES
 (5, 55),
 (5, 56),
 (5, 57),
-(5, 58),
+(5, 59),
+(5, 60),
+(5, 61),
+(5, 62),
+(5, 63),
+(5, 64),
+(5, 65),
+(5, 66),
+(5, 67),
+(5, 68),
+(5, 69),
 (5, 90),
 (6, 1),
 (7, 44),
@@ -120,6 +139,18 @@ INSERT INTO `attribute_product` (`attr_id`, `product_id`) VALUES
 (8, 48),
 (8, 49),
 (8, 54),
+(8, 57),
+(8, 59),
+(8, 60),
+(8, 61),
+(8, 62),
+(8, 63),
+(8, 64),
+(8, 65),
+(8, 66),
+(8, 67),
+(8, 68),
+(8, 69),
 (9, 42),
 (10, 1),
 (12, 43),
@@ -127,6 +158,18 @@ INSERT INTO `attribute_product` (`attr_id`, `product_id`) VALUES
 (12, 47),
 (12, 48),
 (12, 49),
+(12, 57),
+(12, 59),
+(12, 60),
+(12, 61),
+(12, 62),
+(12, 63),
+(12, 64),
+(12, 65),
+(12, 66),
+(12, 67),
+(12, 68),
+(12, 69),
 (13, 42),
 (16, 44),
 (18, 44),
@@ -134,13 +177,25 @@ INSERT INTO `attribute_product` (`attr_id`, `product_id`) VALUES
 (18, 47),
 (18, 48),
 (18, 49),
+(18, 57),
+(18, 59),
+(18, 60),
+(18, 61),
+(18, 62),
+(18, 63),
+(18, 64),
+(18, 65),
+(18, 66),
+(18, 67),
+(18, 68),
+(18, 69),
 (19, 42),
 (19, 43);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `attribute_value`
+-- Table structure for table `attribute_value`
 --
 
 CREATE TABLE `attribute_value` (
@@ -150,7 +205,7 @@ CREATE TABLE `attribute_value` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `attribute_value`
+-- Dumping data for table `attribute_value`
 --
 
 INSERT INTO `attribute_value` (`id`, `value`, `attr_group_id`) VALUES
@@ -177,7 +232,7 @@ INSERT INTO `attribute_value` (`id`, `value`, `attr_group_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `brand`
+-- Table structure for table `brand`
 --
 
 CREATE TABLE `brand` (
@@ -189,7 +244,7 @@ CREATE TABLE `brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `brand`
+-- Dumping data for table `brand`
 --
 
 INSERT INTO `brand` (`id`, `title`, `alias`, `img`, `description`) VALUES
@@ -202,7 +257,7 @@ INSERT INTO `brand` (`id`, `title`, `alias`, `img`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -215,7 +270,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `title`, `alias`, `parent_id`, `keywords`, `description`) VALUES
@@ -239,7 +294,7 @@ INSERT INTO `category` (`id`, `title`, `alias`, `parent_id`, `keywords`, `descri
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `currency`
+-- Table structure for table `currency`
 --
 
 CREATE TABLE `currency` (
@@ -249,22 +304,22 @@ CREATE TABLE `currency` (
   `symbol_left` varchar(10) NOT NULL,
   `symbol_right` varchar(10) NOT NULL,
   `value` float(15,2) NOT NULL,
-  `base` enum('0','1') NOT NULL
+  `base` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `currency`
+-- Dumping data for table `currency`
 --
 
 INSERT INTO `currency` (`id`, `title`, `code`, `symbol_left`, `symbol_right`, `value`, `base`) VALUES
-(1, 'гривна', 'UAH', '', 'грн.', 25.80, '0'),
-(2, 'доллар', 'USD', '$', '', 1.00, '1'),
-(3, 'Евро', 'EUR', '€', '', 0.88, '0');
+(1, 'гривна', 'UAH', '', 'грн.', 25.80, 0),
+(2, 'доллар', 'USD', '$', '', 1.00, 1),
+(3, 'Евро', 'EUR', '€', '', 0.88, 0);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `gallery`
+-- Table structure for table `gallery`
 --
 
 CREATE TABLE `gallery` (
@@ -274,7 +329,7 @@ CREATE TABLE `gallery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `gallery`
+-- Dumping data for table `gallery`
 --
 
 INSERT INTO `gallery` (`id`, `product_id`, `img`) VALUES
@@ -291,12 +346,16 @@ INSERT INTO `gallery` (`id`, `product_id`, `img`) VALUES
 (24, 49, 'd1b198bbeb14047545e777a2dd49dc3e.jpg'),
 (26, 49, '86f45497d6797f0e3a35e35aee14eec4.jpg'),
 (27, 90, '1467ac87a1c930b18aed2f1734420e79.jpg'),
-(28, 90, '71eb7cde566960a7e88cbfbc2cbb807c.jpg');
+(28, 90, '71eb7cde566960a7e88cbfbc2cbb807c.jpg'),
+(29, 57, 'adbb496d4a8abde3c3186982af9a2e06.jpg'),
+(30, 57, '9c3610256aafab27d3ee7288e5bd37fc.jpg'),
+(31, 57, '69a0dddec900cbef64f0250c7bc5ad72.jpg'),
+(32, 57, '65bab70d342f038ef3eb7ff7bdb87159.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `modification`
+-- Table structure for table `modification`
 --
 
 CREATE TABLE `modification` (
@@ -307,7 +366,7 @@ CREATE TABLE `modification` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `modification`
+-- Dumping data for table `modification`
 --
 
 INSERT INTO `modification` (`id`, `product_id`, `title`, `price`) VALUES
@@ -317,22 +376,13 @@ INSERT INTO `modification` (`id`, `product_id`, `title`, `price`) VALUES
 (4, 1, 'Red', 310),
 (5, 2, 'Silver', 80),
 (6, 2, 'Red', 70),
-(9, 82, 'red', 103),
-(10, 82, 'green', 105),
-(11, 89, 'green', 105),
-(12, 90, 'green', 105),
-(13, 91, 'red', 105),
-(14, 96, 'green', 105),
-(15, 99, 'Red', 105),
-(16, 100, 'Red', 105),
-(17, 101, 'green', 105),
-(18, 102, 'green', 105),
-(19, 121, 'green', 105);
+(7, 58, 'green', 105),
+(8, 58, 'red', 103);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
@@ -346,7 +396,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`id`, `user_id`, `status`, `date`, `update_at`, `currency`, `note`) VALUES
@@ -360,7 +410,7 @@ INSERT INTO `order` (`id`, `user_id`, `status`, `date`, `update_at`, `currency`,
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `order_product`
+-- Table structure for table `order_product`
 --
 
 CREATE TABLE `order_product` (
@@ -373,7 +423,7 @@ CREATE TABLE `order_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `order_product`
+-- Dumping data for table `order_product`
 --
 
 INSERT INTO `order_product` (`id`, `order_id`, `product_id`, `qty`, `title`, `price`) VALUES
@@ -391,7 +441,7 @@ INSERT INTO `order_product` (`id`, `order_id`, `product_id`, `qty`, `title`, `pr
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -410,7 +460,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `category_id`, `title`, `alias`, `content`, `price`, `old_price`, `status`, `keywords`, `description`, `img`, `hit`) VALUES
@@ -464,67 +514,13 @@ INSERT INTO `product` (`id`, `category_id`, `title`, `alias`, `content`, `price`
 (54, 17, 'test', 'test-54', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
 (55, 15, 'test', 'test-55', '', 102, 0, 1, '444', '111', 'no_image.jpg', 0),
 (56, 15, 'test', 'test-56', '', 102, 0, 1, '444', '111', 'no_image.jpg', 0),
-(57, 15, 'test', 'test-57', '', 102, 0, 1, '444', '111', 'no_image.jpg', 0),
-(58, 15, 'test', 'test-58', '', 102, 0, 1, '444', '111', 'no_image.jpg', 0),
-(59, 15, 'test', 'test-59', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(61, 17, 'test', 'test-61', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(62, 17, 'test', 'test-62', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(63, 17, 'test', 'test-63', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(64, 17, 'test', 'test-64', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(65, 17, 'test', 'test-65', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(66, 17, 'test', 'test-66', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(67, 17, 'test', 'test-67', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(68, 17, 'test', 'test-68', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(69, 17, 'test', 'test-69', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(72, 17, 'test', 'test-72', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(73, 17, 'test', 'test-73', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(74, 17, 'test', 'test-74', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(75, 17, 'test', 'test-75', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(76, 17, 'test', 'test-76', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(77, 17, 'test', 'test-77', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(78, 17, 'test', 'test-78', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(79, 17, 'test', 'test-79', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(80, 17, 'test', 'test-80', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(87, 15, 'test', 'test-87', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(88, 15, 'test', 'test-88', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(89, 15, 'test', 'test-89', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(90, 17, 'test', 'test-90', '<p>111</p>\r\n', 102, 0, 1, '111', '111', '2494b0e98f059385874c7458ef5c7075.jpg', 0),
-(91, 17, 'test', 'test-91', '', 102, 0, 1, '111', '111', '54687281a2b7da3ac4b7505676e8ff4e.jpg', 0),
-(92, 17, 'test', 'test-92', '', 102, 0, 1, '111', '111', '8f8689045922f224b43d89388ff6083b.jpg', 0),
-(93, 17, 'test', 'test-93', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(94, 17, 'test', 'test-94', '', 404, 0, 1, '555', '111', 'no_image.jpg', 0),
-(95, 17, 'test', 'test-95', '', 404, 0, 1, '555', '111', 'no_image.jpg', 0),
-(96, 17, 'test', 'test-96', '', 404, 0, 1, '555', '111', 'no_image.jpg', 0),
-(97, 17, 'test', 'test-97', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(98, 17, 'test', 'test-98', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(99, 17, 'test', 'test-99', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(100, 17, 'test', 'test-100', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(101, 17, 'test', 'test-101', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(102, 17, 'test', 'test-102', '', 102, 0, 1, '6', '111', 'no_image.jpg', 0),
-(103, 17, 'test', 'test-103', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(104, 17, 'test', 'test-104', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(105, 17, 'test', 'test-105', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(106, 17, 'test', 'test-106', '', 102, 222, 1, '111', '111', 'no_image.jpg', 0),
-(107, 17, 'test', 'test-107', '', 542, 0, 1, '333', '6', 'no_image.jpg', 0),
-(108, 17, 'test', 'test-108', '', 542, 0, 1, '333', '6', 'no_image.jpg', 0),
-(109, 17, 'test', 'test-109', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(110, 17, 'test', 'test-110', '', 102, 0, 1, '222', '555', 'no_image.jpg', 0),
-(111, 17, 'test', 'test-111', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(112, 17, 'test', 'test-112', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(113, 17, 'test', 'test-113', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0),
-(114, 17, 'test', 'test-114', '', 404, 0, 1, '111', '111', 'no_image.jpg', 0),
-(115, 17, 'test', 'test-115', '', 404, 0, 1, '111', '111', 'no_image.jpg', 0),
-(116, 17, 'test', 'test-116', '', 404, 0, 1, '111', '111', 'no_image.jpg', 0),
-(117, 17, 'test', 'test-117', '', 404, 0, 1, '111', '111', 'no_image.jpg', 0),
-(118, 17, 'test', 'test-118', '', 404, 0, 1, '111', '111', 'no_image.jpg', 0),
-(119, 17, 'test', 'test-119', '', 404, 0, 1, '111', '111', 'no_image.jpg', 0),
-(120, 17, 'test', 'test-120', '', 404, 0, 1, '111', '111', 'no_image.jpg', 0),
-(122, 17, 'test', '', '', 102, 0, 1, '111', '111', 'no_image.jpg', 0);
+(57, 17, 'test2', 'test2', '<p>111</p>\r\n', 102, 99, 1, '111', '111', '149529eb3c3e790c3d03c16ec84fbc94.jpg', 0),
+(58, 17, 'test12', 'test12-58', '', 102, 99, 1, '111', '111', 'no_image.jpg', 0);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `related_product`
+-- Table structure for table `related_product`
 --
 
 CREATE TABLE `related_product` (
@@ -533,7 +529,7 @@ CREATE TABLE `related_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `related_product`
+-- Dumping data for table `related_product`
 --
 
 INSERT INTO `related_product` (`product_id`, `related_id`) VALUES
@@ -550,13 +546,15 @@ INSERT INTO `related_product` (`product_id`, `related_id`) VALUES
 (49, 36),
 (49, 38),
 (49, 43),
+(57, 37),
+(57, 42),
 (90, 37),
 (90, 42);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -570,7 +568,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `login`, `password`, `email`, `name`, `address`, `role`) VALUES
@@ -584,23 +582,23 @@ INSERT INTO `user` (`id`, `login`, `password`, `email`, `name`, `address`, `role
 (27, '10', '$2y$10$kuvsaB2kFXNfO9tswF2fFeQnvhD1DQZ61F/uM1vQVz2Zi6le4BEBi', '10@mail.ru', 'Ann', 'г. Керчь', 'user');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `attribute_group`
+-- Indexes for table `attribute_group`
 --
 ALTER TABLE `attribute_group`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `attribute_product`
+-- Indexes for table `attribute_product`
 --
 ALTER TABLE `attribute_product`
   ADD PRIMARY KEY (`attr_id`,`product_id`);
 
 --
--- Индексы таблицы `attribute_value`
+-- Indexes for table `attribute_value`
 --
 ALTER TABLE `attribute_value`
   ADD PRIMARY KEY (`id`),
@@ -608,52 +606,52 @@ ALTER TABLE `attribute_value`
   ADD KEY `attr_group_id` (`attr_group_id`);
 
 --
--- Индексы таблицы `brand`
+-- Indexes for table `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `alias` (`alias`);
 
 --
--- Индексы таблицы `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `alias` (`alias`);
 
 --
--- Индексы таблицы `currency`
+-- Indexes for table `currency`
 --
 ALTER TABLE `currency`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `gallery`
+-- Indexes for table `gallery`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `modification`
+-- Indexes for table `modification`
 --
 ALTER TABLE `modification`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `order`
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `order_product`
+-- Indexes for table `order_product`
 --
 ALTER TABLE `order_product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `order_id` (`order_id`);
 
 --
--- Индексы таблицы `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
@@ -662,13 +660,13 @@ ALTER TABLE `product`
   ADD KEY `hit` (`hit`);
 
 --
--- Индексы таблицы `related_product`
+-- Indexes for table `related_product`
 --
 ALTER TABLE `related_product`
   ADD PRIMARY KEY (`product_id`,`related_id`);
 
 --
--- Индексы таблицы `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
@@ -676,81 +674,81 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `attribute_group`
+-- AUTO_INCREMENT for table `attribute_group`
 --
 ALTER TABLE `attribute_group`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT для таблицы `attribute_value`
+-- AUTO_INCREMENT for table `attribute_value`
 --
 ALTER TABLE `attribute_value`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT для таблицы `brand`
+-- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT для таблицы `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT для таблицы `currency`
+-- AUTO_INCREMENT for table `currency`
 --
 ALTER TABLE `currency`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `gallery`
+-- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT для таблицы `modification`
+-- AUTO_INCREMENT for table `modification`
 --
 ALTER TABLE `modification`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT для таблицы `order`
+-- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT для таблицы `order_product`
+-- AUTO_INCREMENT for table `order_product`
 --
 ALTER TABLE `order_product`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT для таблицы `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- AUTO_INCREMENT для таблицы `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `order_product`
+-- Constraints for table `order_product`
 --
 ALTER TABLE `order_product`
   ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
