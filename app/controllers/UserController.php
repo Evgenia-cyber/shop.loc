@@ -10,9 +10,9 @@ class UserController extends AppController {
         if (!empty($_POST)) {
             $user = new User();
             $data = $_POST;
-            if (array_key_exists('role', $data)) {
-                 $data['role'] = 'user';
-            }
+//            if (array_key_exists('role', $data)) {
+//                 $data['role'] = 'user';
+//            }
             $user->load($data);
             if (!$user->validate($data) || !$user->checkUnique()) {
                 $user->getErrors();
