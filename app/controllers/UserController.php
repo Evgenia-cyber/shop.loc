@@ -58,4 +58,69 @@ class UserController extends AppController {
         redirect();
     }
 
+    public function newPswAction() {
+        if (!empty($_POST)) {
+            $email = $_POST['email'];
+            $hasEmail = \R::count('user', 'email = ?', [$email]); //0 или 1
+            if ($hasEmail) {
+                $recovery_psw = new \app\models\RecoveryPSW();
+                $recovery_psw->attributes['email'] = $email;
+                $recovery_psw->attributes['time'] = time();
+                $recovery_psw->attributes['hash'] = password_hash($recovery_psw->attributes['time'], PASSWORD_DEFAULT);
+                if ($id = $recovery_psw->save('psw_recovery', FALSE)) {
+                    $_SESSION['hash'] = $recovery_psw->attributes['hash'];
+                    $_SESSION['email'] = $recovery_psw->attributes['email'];
+                    //отправить письмо с hash
+                    $user_email = $recovery_psw->attributes['email'];
+                    \app\models\RecoveryPSW::mailNewPsw($user_email);
+                    $_SESSION['success'] = 'Мы отправили на Ваш email ссылку для восстановления пароля';
+                    redirect(PATH);
+                }
+            } else {
+                $_SESSION['error'] = 'К сожалению, нет такого email.';
+            }
+            redirect();
+        }
+        $this->setMeta('Восстановление пароля');
+    }
+
+    public function newUserPswAction() {
+        $hash_from_user = $_GET['getPass'];
+        if ($hash_from_user) {
+            $dataToRecovery = \R::getRow('SELECT * FROM `psw_recovery` WHERE `hash` LIKE :hash LIMIT 1', ['hash' => "%$hash_from_user%"]);
+            if (!$dataToRecovery) {
+                $_SESSION['error'] = 'К сожалению, ссылка недействительна. Повторите действия по восстановлению пароля заново.';
+                redirect(PATH . "/user/new-psw");
+            }
+            $difference = (time() - $dataToRecovery['time']) / 60; //минуты
+            if ($difference > 60) {
+                \R::exec('DELETE FROM `psw_recovery` WHERE `hash`=?', [$hash_from_user]);
+                $_SESSION['error'] = 'К сожалению, срок действия ссылки истек. Повторите действия по восстановлению пароля заново.';
+                redirect(PATH . "/user/new-psw");
+            }
+            redirect(PATH . "/user/save-user-psw");
+        }
+        redirect(PATH);
+    }
+
+    public function saveUserPswAction() {
+        if (!empty($_POST)) {
+            $email = $_SESSION['email'];
+            $new_psw = trim($_POST['password']);
+            $new_psw = password_hash($new_psw, PASSWORD_DEFAULT);
+            \R::exec('UPDATE `user` SET `password`=? WHERE `email`=?', [$new_psw, $email]);
+            $user = \R::findOne('user', "email = ?", [$email]);
+            if ($user) {
+                foreach ($user as $k => $v) {
+                    if ($k != 'password')
+                        $_SESSION['user'][$k] = $v;
+                }
+            }
+            unset($_SESSION['email']);
+            $_SESSION['success'] = 'Вы успешно изменили пароль';
+            redirect(PATH);
+        }
+        $this->setMeta('Восстановление пароля');
+    }
+
 }

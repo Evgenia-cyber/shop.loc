@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/OrderController.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/models/Order.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/CartController.php</file>
             <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/FilterController.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/models/Cart.php</file>
-            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Order/view.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/mail/mail_new_psw.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/models/RecoveryPSW.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/admin/Category/edit.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/UserController.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/controllers/admin/UserController.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/User/new-psw.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/views/User/save-user-psw.php</file>
+            <file>file:/D:/OpenServer/domains/shop.loc/app/models/User.php</file>
         </group>
     </open-files>
 </project-private>

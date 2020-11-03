@@ -35,6 +35,9 @@
                                 </div>
                                 <button type="submit" class="btn btn-default">Войти</button>
                             </form>
+                            <div>
+                            <a href="user/new-psw">Забыли пароль?</a>
+                            </div>
                         </div>
                     </div>
                 </div>
