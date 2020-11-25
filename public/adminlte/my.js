@@ -44,11 +44,25 @@ if ($('div').is('#single')) {
             buttonMulti = $("#multi"),
             file;
 }
+if ($('div').is('#news-img')) {
+    var buttonNewsImg = $("#news-img"),
+            file;
+}
+if ($('div').is('#slide-img')) {
+    var buttonSlideImg = $("#slide-img"),
+            file;
+}
 if (buttonSingle) {
     ajaxUploadImg(buttonSingle);
 }
 if (buttonMulti) {
     ajaxUploadImg(buttonMulti);
+}
+if (buttonNewsImg) {
+    ajaxUploadImg(buttonNewsImg);
+}
+if (buttonSlideImg) {
+    ajaxUploadImg(buttonSlideImg);
 }
 function ajaxUploadImg(button) {
     return new AjaxUpload(button, {
@@ -207,10 +221,73 @@ $('.del-single-img').on('click', function () {
         }
     });
 });
+
+$('.del-news-img').on('click', function () {
+    var res = confirm("Подтвердите действие");
+    if (!res) {
+        return false;
+    }
+    var $this = $(this);
+    var id = $this.data('id');
+    var src = $this.data('src');
+    $.ajax({
+        url: adminpath + "/news/delete-news-img",
+        type: 'POST',
+        data: {id: id, src: src},
+        beforeSend: function () {
+            $this.closest('.file-upload').find(".overlay").css({'display': 'block'});
+        },
+        success: function (res) {
+            setTimeout(function () {
+                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
+                if (res == 1) {
+                    $this.fadeOut();
+                }
+            }, 1000);
+        },
+        error: function () {
+            setTimeout(function () {
+                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
+                alert("Ошибка!");
+            }, 1000);
+        }
+    });
+});
+$('.del-slide-img').on('click', function () {
+    var res = confirm("Подтвердите действие");
+    if (!res) {
+        return false;
+    }
+    var $this = $(this);
+    var id = $this.data('id');
+    var src = $this.data('src');
+    $.ajax({
+        url: adminpath + "/slides/delete-slide-img",
+        type: 'POST',
+        data: {id: id, src: src},
+        beforeSend: function () {
+            $this.closest('.file-upload').find(".overlay").css({'display': 'block'});
+        },
+        success: function (res) {
+            setTimeout(function () {
+                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
+                if (res == 1) {
+                    $this.fadeOut();
+                }
+            }, 1000);
+        },
+        error: function () {
+            setTimeout(function () {
+                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
+                alert("Ошибка!");
+            }, 1000);
+        }
+    });
+});
 /*********************************/
 $('#add_form').on('submit', function () {
 //    $('#category_id').css({'border':"2px solid red"});
-    if(!isNumeric($('#category_id').val())) {
+    if (!isNumeric($('#category_id').val())) {
         alert("Выберите категорию/группу!");
         return false;
     }

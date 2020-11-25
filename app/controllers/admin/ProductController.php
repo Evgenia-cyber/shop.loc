@@ -128,8 +128,7 @@ class ProductController extends AppController {
                 $hmax = App::$app->getProperty('gallery_height');
             }
             $name = $_POST['name'];
-            $product = new Product();
-            $product->uploadImg($name, $wmax, $hmax);
+            \app\models\admin\Image::uploadImg($name, $wmax, $hmax);
         }
     }
 

@@ -16,6 +16,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <link rel="stylesheet" href="megamenu/css/style.css">
         <link rel="stylesheet" href="megamenu/css/ionicons.min.css">
         <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+        <link href="css/eventCalendar.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/eventCalendar_theme_responsive.css" rel="stylesheet" type="text/css" media="all" />
+
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
@@ -95,7 +98,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 new widgets\menu\Menu(
                                         [
                                     'tpl' => WWW . '/menu/menu.php',
-//                                        'attrs'=>['style'=>'border:1px solid red;']
+
                                 ]);
                                 ?>
                             </div>
@@ -108,7 +111,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <input type="text" class="typeahead" id="typeahead" name="s" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {
                                             this.value = 'Search';
                                         }">
-                                <!--<input type="text" class="typeahead" id="typeahead" name="s">-->
+
                                 <input type="submit" value="">
                             </form>
                         </div>
@@ -154,7 +157,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <h3>Information</h3>
                         <ul>
                             <li><a href="#"><p>Specials</p></a></li>
-                            <li><a href="#"><p>New Products</p></a></li>
+                            <li><a href="news/view"><p>Our news</p></a></li>
                             <li><a href="#"><p>Our Stores</p></a></li>
                             <li><a href="contact.html"><p>Contact Us</p></a></li>
                             <li><a href="#"><p>Top Sellers</p></a></li>
@@ -301,13 +304,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
             });
         </script>
+        <script src="js/moment.js"></script>
+        <script src="js/jquery.eventCalendar.js"></script>
+
         <script src="js/main.js"></script>
 
         <?php
         $logs = \R::getDatabaseAdapter()
-                ->getDatabase()
-                ->getLogger();
-        debug($logs->grep('SELECT'));
+//                ->getDatabase()
+//                ->getLogger();
+        //debug($logs->grep('SELECT'));
         ?>
     </body>
 </html>

@@ -1,24 +1,24 @@
 /* filters */
-$('body').on('change', '.w_sidebar input', function(){
+$('body').on('change', '.w_sidebar input', function () {
     var checked = $('.w_sidebar input:checked'),
-        data = '';
+            data = '';
     checked.each(function () {
         data += this.value + ',';
     });
-    if(data){
+    if (data) {
         $.ajax({
             url: location.href,
             data: {filter: data},
             type: 'GET',
-            beforeSend: function(){
-                $('.preloader').fadeIn(300, function(){
+            beforeSend: function () {
+                $('.preloader').fadeIn(300, function () {
                     $('.product-one').hide();
                 });
             },
-            success: function(res){
-                $('.preloader').delay(500).fadeOut('slow', function(){
+            success: function (res) {
+                $('.preloader').delay(500).fadeOut('slow', function () {
                     $('.product-one').html(res).fadeIn();
-                    var url = location.search.replace(/filter(.+?)(&|$)/g, ''); 
+                    var url = location.search.replace(/filter(.+?)(&|$)/g, '');
                     var newURL = location.pathname + url + (location.search ? "&" : "?") + "filter=" + data;
                     newURL = newURL.replace('&&', '&');
                     newURL = newURL.replace('?&', '?');
@@ -29,7 +29,7 @@ $('body').on('change', '.w_sidebar input', function(){
                 alert('Ошибка!');
             }
         });
-    }else{
+    } else {
         window.location = location.pathname;
     }
 });
@@ -48,14 +48,14 @@ products.initialize();
 $("#typeahead").typeahead({
     // hint: false,
     highlight: true
-},{
+}, {
     name: 'products',
     display: 'title',
     limit: 10,
     source: products
 });
 
-$('#typeahead').bind('typeahead:select', function(ev, suggestion) {
+$('#typeahead').bind('typeahead:select', function (ev, suggestion) {
     // console.log(suggestion);
     window.location = path + '/search/?s=' + encodeURIComponent(suggestion.title);
 });
@@ -80,7 +80,7 @@ $('body').on('click', '.add-to-cart-link', function (event) {
 //    console.log(id,qty,mod);
 });
 
-$('#cart .modal-body').on('click','.del-item', function () {
+$('#cart .modal-body').on('click', '.del-item', function () {
     const id = $(this).data('id');
     $.ajax({
         url: '/cart/delete',
@@ -103,7 +103,7 @@ function showCart(cart) {
     }
     $("#cart .modal-body").html(cart);
     $('#cart').modal();
-    if($('.cart-sum').text()){
+    if ($('.cart-sum').text()) {
         $('.simpleCart_total').html($('#cart .cart-sum').text());
     } else {
         $('.simpleCart_total').text('Корзина пуста');
@@ -124,7 +124,7 @@ function getCart() {
 }
 
 function clearCart() {
-     $.ajax({
+    $.ajax({
         url: '/cart/clear',
         type: 'GET',
         success: function (res) {
@@ -136,6 +136,7 @@ function clearCart() {
     });
 }
 /*cart*/
+/*****/
 $('#currency').change(function () {
     window.location = 'currency/change?curr=' + $(this).val();
 });
@@ -176,4 +177,47 @@ $('.available select').on('change', function () {
     }
 
 })
+/*****/
+/*calendar*/
+if ($('div').is("#calendar")) {
+    $.ajax({
+        url: '/news/view',
+        type: 'GET',
+        success: function (res) {
+            var data = JSON.parse(res);
+            $("#calendar").eventCalendar({
+                jsonData: data,
+//    eventsjson: '../eventCalendar.json',
+                jsonDateFormat: 'human',
+                dateFormat: "YYYY/MM/DD",
+//    openEventInNewWindow: true,
+                locales: {
+                    locale: "ru",
+                    txt_noEvents: "Нет новостей",
+                    txt_SpecificEvents_prev: "",
+                    txt_SpecificEvents_after: "новости:",
+                    txt_NextEvents: "Новости сегодня:",
+                    txt_GoToEventUrl: "Смотреть новость",
+                    showDescription: true,
+                    moment: {
+                        "months": ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+                            "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+                        "monthsShort": ["Янв", "Фев", "Мар", "Апр", "Май", "Июн",
+                            "Июл", "Aвг", "Сен", "Окт", "Ноя", "Дек"],
+                        "weekdays": ["Воскресенье", "Понедельние", "Вторник", "Среда",
+                            "Четверг", "Пятница", "Суббота"],
+                        "weekdaysShort": ["Вс", "Пн", "Вт", "Ср",
+                            "Чт", "Пт", "Сб"],
+                        "weekdaysMin": ["Вс", "Пн", "Вт", "Ср",
+                            "Чт", "Пт", "Сб"]
+                    }
+                }
+            });
+        },
+        error: function () {
+            alert('Ошибка! Попробуйте позже.');
+        }
+    });
+}
+/*calendar*/
 
