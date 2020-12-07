@@ -85,57 +85,8 @@ function ajaxUploadImg(button) {
         }
     });
 }
-//new AjaxUpload(buttonSingle, {
-//    action: adminpath + buttonSingle.data('url') + "?upload=1",
-//    data: {name: buttonSingle.data('name')},
-//    name: buttonSingle.data('name'),
-//    onSubmit: function(file, ext){
-//        if (! (ext && /^(jpg|png|jpeg|gif)$/i.test(ext))){
-//            alert('Ошибка! Разрешены только изображения');
-//            return false;
-//        }
-//        buttonSingle.closest('.file-upload').find('.overlay').css({'display':'block'});
-//
-//    },
-//    onComplete: function(file, response){
-//        setTimeout(function(){
-//            buttonSingle.closest('.file-upload').find('.overlay').css({'display':'none'});
-//
-//            response = JSON.parse(response);
-//            $('.' + buttonSingle.data('name')).html('<img src="/images/' + response.file + '" style="max-height: 150px;">');
-//        }, 1000);
-//    }
-//});
 
-//new AjaxUpload(buttonMulti, {
-//    action: adminpath + buttonMulti.data('url') + "?upload=1",
-//    data: {name: buttonMulti.data('name')},
-//    name: buttonMulti.data('name'),
-//    onSubmit: function(file, ext){
-//        if (! (ext && /^(jpg|png|jpeg|gif)$/i.test(ext))){
-//            alert('Ошибка! Разрешены только изображения');
-//            return false;
-//        }
-//        buttonMulti.closest('.file-upload').find('.overlay').css({'display':'block'});
-//
-//    },
-//    onComplete: function(file, response){
-//        setTimeout(function(){
-//            buttonMulti.closest('.file-upload').find('.overlay').css({'display':'none'});
-//
-//            response = JSON.parse(response);
-//            $('.' + buttonMulti.data('name')).append('<img src="/images/' + response.file + '" style="max-height: 150px;">');
-//        }, 1000);
-//    }
-//});
 ///****************************************/
-//$('#btn_for_modification').on("click", function () {
-//         $(".form-group div.mod:last-of-type").after(
-//            '<input type="text" required name="modification_title[]" value="" class="form-control modification_title" placeholder="Модификации товара">',
-//            '<input type="text" name="modification_price[]" value="" class="form-control modification_price" placeholder="Цена модификации товара" pattern="^[0-9.]{1, }$" data-error="Допускаются цифры и десятичная точка">',
-//            '<div class="help-block with-errors mod"></div>'
-//            );
-//});
 $('#btn_for_modification').on("click", function () {
     $(this).before(
             '\
@@ -158,48 +109,32 @@ $('#submit').on("click", function () {
     $('form').validator('update');
 });
 /**************************************/
-$('.del-item').on('click', function () {
-    var res = confirm("Подтвердите действие");
-    if (!res) {
-        return false;
-    }
-    var $this = $(this);
-    var id = $this.data('id');
-    var src = $this.data('src');
-    $.ajax({
-        url: adminpath + "/product/delete-gallery",
-        type: 'POST',
-        data: {id: id, src: src},
-        beforeSend: function () {
-            $this.closest('.file-upload').find(".overlay").css({'display': 'block'});
-        },
-        success: function (res) {
-            setTimeout(function () {
-                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
-                if (res == 1) {
-                    $this.fadeOut();
-                }
-            }, 1000);
-        },
-        error: function () {
-            setTimeout(function () {
-                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
-                alert("Ошибка!");
-            }, 1000);
-        }
-    });
-});
+$('.del-item').on('click', onClickDeleteItem);
+$('.del-single-img').on('click', onClickDeleteSingleImg);
+$('.del-news-img').on('click', onClickDeleteNewsImg);
+$('.del-slide-img').on('click', onClickDeleteSlideImg);
+function onClickDeleteItem() {
+    deleteItem('/product/delete-gallery',$(this));// передаем контекст
+}
+function onClickDeleteSingleImg() {
+    deleteItem('/product/delete-single-img',$(this));// передаем контекст
+}
+function onClickDeleteNewsImg() {
+    deleteItem('/news/delete-news-img',$(this));// передаем контекст
+}
+function onClickDeleteSlideImg() {
+    deleteItem('/slides/delete-slide-img',$(this));// передаем контекст
+}
 
-$('.del-single-img').on('click', function () {
+function deleteItem(url, $this) {
     var res = confirm("Подтвердите действие");
     if (!res) {
         return false;
     }
-    var $this = $(this);
-    var id = $this.data('id');
+    var id = $this.data('id');// используем контекст
     var src = $this.data('src');
     $.ajax({
-        url: adminpath + "/product/delete-single-img",
+        url: adminpath + url,
         type: 'POST',
         data: {id: id, src: src},
         beforeSend: function () {
@@ -220,73 +155,9 @@ $('.del-single-img').on('click', function () {
             }, 1000);
         }
     });
-});
-
-$('.del-news-img').on('click', function () {
-    var res = confirm("Подтвердите действие");
-    if (!res) {
-        return false;
-    }
-    var $this = $(this);
-    var id = $this.data('id');
-    var src = $this.data('src');
-    $.ajax({
-        url: adminpath + "/news/delete-news-img",
-        type: 'POST',
-        data: {id: id, src: src},
-        beforeSend: function () {
-            $this.closest('.file-upload').find(".overlay").css({'display': 'block'});
-        },
-        success: function (res) {
-            setTimeout(function () {
-                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
-                if (res == 1) {
-                    $this.fadeOut();
-                }
-            }, 1000);
-        },
-        error: function () {
-            setTimeout(function () {
-                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
-                alert("Ошибка!");
-            }, 1000);
-        }
-    });
-});
-$('.del-slide-img').on('click', function () {
-    var res = confirm("Подтвердите действие");
-    if (!res) {
-        return false;
-    }
-    var $this = $(this);
-    var id = $this.data('id');
-    var src = $this.data('src');
-    $.ajax({
-        url: adminpath + "/slides/delete-slide-img",
-        type: 'POST',
-        data: {id: id, src: src},
-        beforeSend: function () {
-            $this.closest('.file-upload').find(".overlay").css({'display': 'block'});
-        },
-        success: function (res) {
-            setTimeout(function () {
-                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
-                if (res == 1) {
-                    $this.fadeOut();
-                }
-            }, 1000);
-        },
-        error: function () {
-            setTimeout(function () {
-                $this.closest('.file-upload').find('.overlay').css({'display': 'none'});
-                alert("Ошибка!");
-            }, 1000);
-        }
-    });
-});
+}
 /*********************************/
 $('#add_form').on('submit', function () {
-//    $('#category_id').css({'border':"2px solid red"});
     if (!isNumeric($('#category_id').val())) {
         alert("Выберите категорию/группу!");
         return false;
